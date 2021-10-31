@@ -1,7 +1,7 @@
 .testimonial {
-  box-shadow: 2px 2px 15px grey;
   border-radius: 10px;
   margin: 20px 0;
+  transition: 0.8s;
 }
 .testimonial img {
   width: 120px;
@@ -9,7 +9,12 @@
   border-radius: 50%;
   margin-bottom: -60px;
   border: 8px solid rgb(240, 240, 240);
+  transition: 0.8s;
 }
+.testimonial:hover {
+  box-shadow: 2px 2px 15px grey;
+}
+
 .testimonial i {
   font-size: 20px;
 }

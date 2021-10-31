@@ -6,42 +6,51 @@ import "./Services.css";
 
 const Services = () => {
   const [serviceItem] = useServices();
+  console.log(serviceItem);
   return (
     <>
-      <section id="services" className="services_sec bg-light my-2">
-        <div className="container">
-          <div className="sec_title">
-            <h2 className="pt-4 fw-bold">
-              <span className="text-danger">Our</span> Service
-            </h2>
-          </div>
-          <div className="row pt-5">
-            {serviceItem.map((item) => {
-              return (
-                <div
-                  key={item._id}
-                  className="col-lg-4 col-md-6 col-sm-12 mb-4"
-                  data-aos="fade-up"
-                >
-                  <Card className="services_card_item my">
-                    <div className="services_img">
-                      <Card.Img variant="top" src={item.img} />
-                    </div>
-                    <Card.Body className="service_text">
-                      <h3>{item.name}</h3>
-                      <h3>Price: {item.price}$</h3>
-                      <p> {item?.description?.slice(1, 60)}....</p>
-                      <HashLink to={`servicesDetails/${item.name}`}>
-                        <button className="regular_btn">Booking Now</button>
-                      </HashLink>
-                    </Card.Body>
-                  </Card>
-                </div>
-              );
-            })}
+      {serviceItem.length === 0 ? (
+        <div className="d-flex justify-content-center my-5">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden"></span>
           </div>
         </div>
-      </section>
+      ) : (
+        <section id="services" className="services_sec bg-light my-2">
+          <div className="container">
+            <div className="sec_title">
+              <h2 className="pt-4 fw-bold">
+                <span className="text-danger">Our</span> Service
+              </h2>
+            </div>
+            <div className="row pt-5">
+              {serviceItem.map((item) => {
+                return (
+                  <div
+                    key={item._id}
+                    className="col-lg-4 col-md-6 col-sm-12 mb-4"
+                    data-aos="fade-up"
+                  >
+                    <Card className="services_card_item my">
+                      <div className="services_img">
+                        <Card.Img variant="top" src={item.img} />
+                      </div>
+                      <Card.Body className="service_text">
+                        <h3>{item.name}</h3>
+                        <h3>Price: {item.price}$</h3>
+                        <p> {item?.description?.slice(1, 60)}....</p>
+                        <HashLink to={`servicesDetails/${item.name}`}>
+                          <button className="regular_btn">Booking Now</button>
+                        </HashLink>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 };

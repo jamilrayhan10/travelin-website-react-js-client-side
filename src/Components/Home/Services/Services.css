@@ -30,7 +30,10 @@
   color: var(--paragraph-color);
   line-height: 26px;
 }
-
+.spiner span {
+  display: block;
+  margin: auto;
+}
 /* ----------------------media query---------------- */
 
 /* ----------tablet size----------------- */
