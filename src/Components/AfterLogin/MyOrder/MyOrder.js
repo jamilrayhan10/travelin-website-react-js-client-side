@@ -31,7 +31,7 @@ const MyOrder = () => {
     }
   };
   return (
-    <>
+    <div className="mt-5 pt-4">
       {myOrders.length === 0 ? (
         <div className="d-flex justify-content-center my-5">
           <div className="spinner-border" role="status">
@@ -61,7 +61,7 @@ const MyOrder = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

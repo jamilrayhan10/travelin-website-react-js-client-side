@@ -6,7 +6,6 @@ import "./Services.css";
 
 const Services = () => {
   const [serviceItem] = useServices();
-  console.log(serviceItem);
   return (
     <>
       {serviceItem.length === 0 ? (

@@ -28,31 +28,41 @@ const ManegeAllOrder = () => {
     }
   };
   return (
-    <div className="container">
-      <div style={{ marginTop: "100px" }}>
-        <div className="row">
-          {allOrders.map((all) => (
-            <div className="col-lg-4 " key={all._id}>
-              <div className=" p-3 d-flex bg-info my-3">
-                <img
-                  style={{ width: "150px" }}
-                  src={all?.servicesItem?.img}
-                  alt=""
-                />
-                <div className="deletebtn ms-2">
-                  <h5>{all?.servicesItem?.name}</h5>
-                  <button
-                    onClick={() => handleDelete(all._id)}
-                    className="btn btn-danger"
-                  >
-                    delete
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+    <div className="mt-5 pt-5">
+      {allOrders.length === 0 ? (
+        <div className="d-flex justify-content-center my-5">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden"></span>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="container">
+          <div style={{ marginTop: "100px" }}>
+            <div className="row">
+              {allOrders.map((all) => (
+                <div className="col-lg-4 " key={all._id}>
+                  <div className=" p-3 d-flex bg-info my-3">
+                    <img
+                      style={{ width: "150px" }}
+                      src={all?.servicesItem?.img}
+                      alt=""
+                    />
+                    <div className="deletebtn ms-2">
+                      <h5>{all?.servicesItem?.name}</h5>
+                      <button
+                        onClick={() => handleDelete(all._id)}
+                        className="btn btn-danger"
+                      >
+                        delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
