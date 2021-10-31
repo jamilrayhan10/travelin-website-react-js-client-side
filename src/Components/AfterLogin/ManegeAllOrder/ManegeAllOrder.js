@@ -41,20 +41,23 @@ const ManegeAllOrder = () => {
             <div className="row">
               {allOrders.map((all) => (
                 <div className="col-lg-4 " key={all._id}>
-                  <div className=" p-3 d-flex bg-info my-3">
+                  <div className=" p-3 d-flex border my-3">
                     <img
                       style={{ width: "150px" }}
                       src={all?.servicesItem?.img}
                       alt=""
                     />
-                    <div className="deletebtn ms-2">
-                      <h5>{all?.servicesItem?.name}</h5>
+                    <div className="deletebtn ms-2 mt-2">
+                      <h6 className="py-2 fw-bold">
+                        {all?.servicesItem?.name}
+                      </h6>
                       <button
                         onClick={() => handleDelete(all._id)}
                         className="btn btn-danger"
                       >
                         delete
                       </button>
+                      <button className="btn btn-info ms-2">Approved</button>
                     </div>
                   </div>
                 </div>

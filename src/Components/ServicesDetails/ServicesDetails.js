@@ -23,6 +23,10 @@ const ServicesDetails = () => {
       res.json().then((data) => setSelectedItem(data))
     );
   }, [name]);
+  useEffect(() => {
+    const matched = serviceItem.find((item) => item.name === name);
+    setSelectedItem(matched);
+  }, [serviceItem, name]);
 
   const onSubmit = (data) => {
     data.servicesItem = selectedItem;
@@ -41,10 +45,7 @@ const ServicesDetails = () => {
         }
       });
   };
-  useEffect(() => {
-    const matched = serviceItem.find((item) => item.name === name);
-    setSelectedItem(matched);
-  }, [serviceItem, name]);
+
   return (
     <section id="services_details" className="order">
       <div className="container">
