@@ -59,7 +59,6 @@ const ServicesDetails = () => {
                 placeholder="email"
               />
               <input {...register("address")} placeholder="Address" required />
-              <input {...register("price")} placeholder="price" required />
               <input {...register("number")} placeholder="phone" required />
 
               <input className="submitbtn" type="submit" />
