@@ -9,20 +9,23 @@ const ManegeAllOrder = () => {
       .then((data) => setAllOrders(data));
   }, []);
   const handleDelete = (id) => {
-    const url = `https://infinite-stream-87987.herokuapp.com/myorders/${id}`;
-    console.log(url);
-    fetch(url, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount) {
-          alert("deleted");
-          const deleteId = allOrders.filter((service) => service._id !== id);
-          console.log("delete", deleteId);
-          setAllOrders(deleteId);
-        }
-      });
+    const deleteConfirm = window.confirm("Are you sure , you want to delete?");
+    if (deleteConfirm) {
+      const url = `https://infinite-stream-87987.herokuapp.com/myorders/${id}`;
+      console.log(url);
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            alert("deleted");
+            const deleteId = allOrders.filter((service) => service._id !== id);
+            console.log("delete", deleteId);
+            setAllOrders(deleteId);
+          }
+        });
+    }
   };
   return (
     <div className="container">

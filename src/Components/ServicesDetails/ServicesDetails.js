@@ -6,21 +6,24 @@ import "./ServicesDetails.css";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import { useParams } from "react-router";
+import useServices from "../../Hooks/useServices";
+
 const ServicesDetails = () => {
   const { user } = useAuth();
   console.log(user);
   const userEmail = user?.email;
   const username = user?.displayName;
   const { name } = useParams();
+  const [serviceItem] = useServices();
   const [selectedItem, setSelectedItem] = useState({});
+  const { register, handleSubmit, reset } = useForm();
+
   useEffect(() => {
     fetch(`http://localhost:5000/orders/${name}`).then((res) =>
       res.json().then((data) => setSelectedItem(data))
     );
   }, [name]);
-  console.log(selectedItem);
 
-  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     data.servicesItem = selectedItem;
     fetch(`https://infinite-stream-87987.herokuapp.com/orders`, {
@@ -38,6 +41,10 @@ const ServicesDetails = () => {
         }
       });
   };
+  useEffect(() => {
+    const matched = serviceItem.find((item) => item.name === name);
+    setSelectedItem(matched);
+  }, [serviceItem, name]);
   return (
     <section id="services_details" className="order">
       <div className="container">
@@ -63,6 +70,22 @@ const ServicesDetails = () => {
 
               <input className="submitbtn" type="submit" />
             </form>
+          </div>
+          <div className="col-lg-6 mt-5 pt-4">
+            <div className="row align-items-center">
+              <div className="service_text border p-3">
+                <div className="service_img text-center">
+                  <img
+                    className="my-2"
+                    style={{ width: "200px" }}
+                    src={selectedItem?.img}
+                    alt=""
+                  />
+                  <h2>{selectedItem?.name}</h2>
+                  <p>{selectedItem?.description}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

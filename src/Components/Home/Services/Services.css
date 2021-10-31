@@ -33,6 +33,7 @@
 .spiner span {
   display: block;
   margin: auto;
+  z-index: 99;
 }
 /* ----------------------media query---------------- */
 

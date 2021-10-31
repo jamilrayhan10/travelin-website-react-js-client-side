@@ -18,3 +18,7 @@
 .testimonial i {
   font-size: 20px;
 }
+.service_img img {
+  border: 8px solid grey;
+  padding: 5px;
+}
