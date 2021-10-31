@@ -8,6 +8,22 @@ const ManegeAllOrder = () => {
       .then((res) => res.json())
       .then((data) => setAllOrders(data));
   }, []);
+  const handleDelete = (id) => {
+    const url = `https://infinite-stream-87987.herokuapp.com/myorders/${id}`;
+    console.log(url);
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          alert("deleted");
+          const deleteId = allOrders.filter((service) => service._id !== id);
+          console.log("delete", deleteId);
+          setAllOrders(deleteId);
+        }
+      });
+  };
   return (
     <div className="container">
       <div style={{ marginTop: "100px" }}>
@@ -22,7 +38,12 @@ const ManegeAllOrder = () => {
                 />
                 <div className="deletebtn ms-2">
                   <h5>{all?.servicesItem?.name}</h5>
-                  <button className="btn btn-danger">delete</button>
+                  <button
+                    onClick={() => handleDelete(all._id)}
+                    className="btn btn-danger"
+                  >
+                    delete
+                  </button>
                 </div>
               </div>
             </div>

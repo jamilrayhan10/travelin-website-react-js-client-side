@@ -5,12 +5,28 @@ const MyOrder = () => {
   const { user } = useAuth();
   const userEmail = user?.email;
   const [myOrders, setMyOrders] = useState([]);
+
   useEffect(() => {
     fetch(
       `https://infinite-stream-87987.herokuapp.com/myorders/${userEmail}`
     ).then((res) => res.json().then((data) => setMyOrders(data)));
   }, [userEmail]);
-
+  const handleDelete = (id) => {
+    const url = `https://infinite-stream-87987.herokuapp.com/myorders/${id}`;
+    console.log(url);
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          alert("deleted");
+          const deleteId = myOrders.filter((service) => service._id !== id);
+          console.log("delete", deleteId);
+          setMyOrders(deleteId);
+        }
+      });
+  };
   return (
     <div className="container">
       <div style={{ marginTop: "100px" }}>
@@ -21,7 +37,12 @@ const MyOrder = () => {
               <div className="border p-2 m-2">
                 <img src={order?.servicesItem?.img} alt="" />
                 <h5>{order.servicesItem.name}</h5>
-                <button className="btn btn-danger">Cancel</button>
+                <button
+                  onClick={() => handleDelete(order._id)}
+                  className="btn btn-danger"
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           ))}

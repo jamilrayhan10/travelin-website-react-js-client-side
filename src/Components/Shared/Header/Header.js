@@ -38,8 +38,9 @@ const Header = () => {
                 <NavLink className="nav_link" to="/home">
                   Home
                 </NavLink>
-                <NavLink className="nav_link" to="/blogs">
-                  Blogs
+
+                <NavLink className="nav_link" to="/about">
+                  About
                 </NavLink>
                 <NavLink className="nav_link" to="/contact">
                   Contact

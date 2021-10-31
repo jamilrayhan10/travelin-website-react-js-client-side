@@ -15,6 +15,7 @@ import MyOrder from "./Components/AfterLogin/MyOrder/MyOrder";
 import ManegeAllOrder from "./Components/AfterLogin/ManegeAllOrder/ManegeAllOrder";
 import { AddService } from "./Components/AddService/AddService";
 import ManageServices from "./Components/ManageServices/ManageServices";
+import AboutUs from "./Components/AboutUs/AboutUs";
 
 function App() {
   return (
@@ -29,8 +30,9 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route path="/blogs">
-              <Blogs></Blogs>
+
+            <Route path="/about">
+              <AboutUs></AboutUs>
             </Route>
             <Route path="/contact">
               <Contact></Contact>
