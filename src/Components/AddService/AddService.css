@@ -1,0 +1,20 @@
+.addService {
+  border: 5px solid rgb(18, 221, 248);
+  width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+}
+.addService input,
+textarea {
+  display: block;
+  margin: 5px auto;
+  width: 400px;
+  padding: 10px;
+  border: 1px solid rgb(0, 138, 126);
+  /* border-radius: 20px; */
+  outline: none;
+}
+.addService textarea {
+  height: 100px;
+  margin: auto;
+}
