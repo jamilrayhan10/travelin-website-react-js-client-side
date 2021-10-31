@@ -48,14 +48,17 @@ const Header = () => {
               </Nav>
               {user.email ? (
                 <div className="user_name">
-                  <NavLink className="nav_link" to="/addService">
+                  <NavLink className="nav_link afterLogin" to="/addService">
                     Add Service
                   </NavLink>
-                  <Link className="text-capitalize   myorders" to="/myorders">
+                  <Link
+                    className="text-capitalize  afterLogin myorders"
+                    to="/myorders"
+                  >
                     My Order
                   </Link>
                   <Link
-                    className="text-capitalize   myallorders "
+                    className="text-capitalize afterLogin  myallorders "
                     to="/myallorders"
                   >
                     Manege All Orders

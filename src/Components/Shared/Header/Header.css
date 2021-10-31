@@ -71,6 +71,9 @@
   .banner_img {
     padding-top: 60px;
   }
+  .afterLogin {
+    display: block;
+  }
 }
 
 /* small mobile device--- */
